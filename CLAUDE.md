@@ -6,6 +6,10 @@
 
 **task-boad** はタスク管理（ボード形式を想定）向けのプロジェクトです。スタックやディレクトリ構成はリポジトリ内の `README.md` や設定ファイル（例: `package.json`、`pyproject.toml`）を正としてください。追加されたらここに追記してもよいです。
 
+## GitHubリポジトリ
+
+https://github.com/hiroshiwaga-source/task.git
+
 ## 実装・編集の原則
 
 - 依頼された範囲に絞って変更する。無関係なリファクタやファイル追加はしない。
