@@ -10,6 +10,12 @@
 
 https://github.com/hiroshiwaga-source/task.git
 
+## GitHub Pages
+
+- 想定の公開 URL: https://hiroshiwaga-source.github.io/task/（リポジトリ名を変えた場合は `vite.config.ts` の `base` と合わせて変更する）
+- リポジトリの **Settings → Pages → Build and deployment** で、**Source** を **GitHub Actions** にする（初回のみ）
+- `main` へプッシュすると `.github/workflows/deploy-github-pages.yml` がビルドしてデプロイする
+
 ## 実装・編集の原則
 
 - 依頼された範囲に絞って変更する。無関係なリファクタやファイル追加はしない。
