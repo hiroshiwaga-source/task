@@ -1,5 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import './App.css'
+
+const STORAGE_KEY = 'task-boad:tasks'
 
 type Task = {
   id: string
@@ -7,9 +9,35 @@ type Task = {
   completed: boolean
 }
 
+function isTask(value: unknown): value is Task {
+  if (value === null || typeof value !== 'object') return false
+  const o = value as Record<string, unknown>
+  return (
+    typeof o.id === 'string' &&
+    typeof o.text === 'string' &&
+    typeof o.completed === 'boolean'
+  )
+}
+
+function loadTasks(): Task[] {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return []
+    const parsed: unknown = JSON.parse(raw)
+    if (!Array.isArray(parsed)) return []
+    return parsed.filter(isTask)
+  } catch {
+    return []
+  }
+}
+
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>(() => loadTasks())
   const [input, setInput] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
+  }, [tasks])
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
