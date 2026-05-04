@@ -15,6 +15,7 @@ https://github.com/hiroshiwaga-source/task.git
 - 想定の公開 URL: https://hiroshiwaga-source.github.io/task/（リポジトリ名を変えた場合は `vite.config.ts` の `base` と合わせて変更する）
 - リポジトリの **Settings → Pages → Build and deployment** で、**Source** を **GitHub Actions** にする（初回のみ）
 - `main` へプッシュすると `.github/workflows/deploy-github-pages.yml` がビルドしてデプロイする
+- 本番ビルドでは `404.html`（`index.html` と同一）と `public/.nojekyll` を出力し、GitHub Pages での 404・Jekyll 由来の不整合を避ける
 
 ## 実装・編集の原則
 
